@@ -33,7 +33,7 @@ My goals were to:
 ReportReader reads file and ReportDataManager coverts it to list of drivers which is printed by ReportPrinter.
 ***
 
-The firsts tests were written for the Driver class followed by Trip. The Driver method was designed with the output file in mind and also contains a list of trips that is utilized later on to calculate the drivers total miles driven and average mph. 
+The firsts tests were written for the Driver class followed by Trip. The Driver method was designed with the output file in mind with the driver name, average MPH, and total miles driven but later on, a list of trips was added to be utilized by DriverStatCalculator class for reporting.
 
 The Trip class was modeled with the input file in mind. To keep the conversion and calculation of minutes driven simple, the start and stop times were stored as LocalTime variables, leveraging Java's ChronoUnit class's built in method to calculate the time between start and stop time as well as being able to store a string containing time and avoid any parsing. 
 
