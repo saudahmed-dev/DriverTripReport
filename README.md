@@ -1,7 +1,7 @@
 DriverTripReport
 ======
 
-**To install and run the application please follow these instructions
+**To install and run the application please follow these instructions**
 
 1. Navigate to parent folder that contains the 'pom.xml' file
 2. Run this code: `mvn install`
