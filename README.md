@@ -41,7 +41,7 @@ Next, I wrote basic test cases for the ReportReader class that reads the input f
 
 The list of strings is then converted by the ReportDataManager class to execute either registering a new driver or mapping trips to the correct driver if the trip passes validation. In order to check which driver the trip belonged to, an equals override was added to the Driver class with the driverName as the uniqueness identifier.
 
-As functionality was added to the ReportDataManager the class grew harder to read. Upon refactoring, three private utility methods were extracted and tests for these methods were rewritten using method reflection. Before returning the lit of Drivers this class calls the DriverStatCalculator to cleanly calculate each of the driver's stats.
+As functionality was added to the ReportDataManager, the class grew harder to read. Upon refactoring, three private utility methods were extracted and tests for these methods were rewritten using method reflection. Before returning the lit of Drivers this class calls the DriverStatCalculator to cleanly calculate each of the driver's stats.
 
 The final class, other than the main method, is the ReportPrinter which formats the list of drivers for output. Before formatting, this class's method leverages the Comparator interface to sort the list of drivers by miles driven.
 
