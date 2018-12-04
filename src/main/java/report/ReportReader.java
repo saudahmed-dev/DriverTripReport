@@ -19,7 +19,7 @@ public class ReportReader {
 			while (in.hasNextLine()) {
 				fileLineList.add(in.nextLine());
 			}
-		
+		in.close();
 		return fileLineList;
 	}
 

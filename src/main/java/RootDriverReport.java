@@ -10,29 +10,35 @@ import main.java.report.ReportReader;
 
 public class RootDriverReport {
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		final ReportReader reportReader = new ReportReader();
 		final ReportDataManager reportDataManager = new ReportDataManager();
 		final ReportPrinter reportPrinter = new ReportPrinter();
 
-		
-		if (args[0] != null) {
-			
-			String filePath = args[0];
-			
-			try {
-			List<String> fileLines = reportReader.getLinesFromFile(filePath);
-			List<Driver> drivers = reportDataManager.getDriverListFromFileLines(fileLines);
-			reportPrinter.printDriverReport(drivers);	
+		try {
+			if (args[0] != null) {
+
+				String filePath = args[0];
+
+				try {
+					List<String> fileLines = reportReader.getLinesFromFile(filePath);
+					List<Driver> drivers = reportDataManager.getDriverListFromFileLines(fileLines);
+					reportPrinter.printDriverReport(drivers);
+				} catch (FileNotFoundException e) {
+					System.out.println("File was not found. Please enter a valid file.");
+				} catch (ArrayIndexOutOfBoundsException e) {
+					System.out.println("Input was invalid. Please re-format your file with this format only\n"
+									 + "Driver Saud\n" 
+									 + "Driver Dan\n" 
+									 + "Driver Chris\n" 
+									 + "Trip Saud 12:35 12:59 12.2\n"
+									 + "Trip Dan 17:24 18:24 40.1");
+
+				}
 			}
-			catch(FileNotFoundException e) {
-				System.out.println("File was not found. Please enter a valid file.");
-			}
+		} catch (ArrayIndexOutOfBoundsException f) {
+			System.out.println("Please enter a file after the main class to get the report on");
 		}
-		else {
-			System.out.println("Please enter a file to get the report on (like a .txt or .csv file)!");
-		}
-		
 	}
 
 }

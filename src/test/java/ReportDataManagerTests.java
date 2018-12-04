@@ -31,6 +31,7 @@ public class ReportDataManagerTests {
 	String filePath = "textFileCopy.txt";
 	String filePath2 = "textFile.txt";
 	Method isTripValid;
+	Method mapLineToTrip;
 	
 	@Before
 	public void setup() throws FileNotFoundException, NoSuchMethodException, SecurityException {
@@ -48,6 +49,9 @@ public class ReportDataManagerTests {
 		isTripValid = ReportDataManager.class.getDeclaredMethod("isTripValid", Trip.class);
 		isTripValid.setAccessible(true);
 		
+		mapLineToTrip = ReportDataManager.class.getDeclaredMethod("mapLineToTrip", String[].class);
+		mapLineToTrip.setAccessible(true);
+		
 	}
 	
 
@@ -62,6 +66,12 @@ public class ReportDataManagerTests {
 		drivers = dataManager.getDriverListFromFileLines(fileLinesList2);
 		Assert.assertEquals("Number of drivers: ", 3, drivers.size());
 
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void test_mapLineToTrip_invalid_input() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException  {
+		String[] invalidString = {"aksdjkas", "akjsdhkajshd,"};
+		Trip newTrip = (Trip) mapLineToTrip.invoke(dataManager, invalidString);
 	}
 	@Test
 	public void test_valid_trips() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
