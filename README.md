@@ -37,7 +37,7 @@ The firsts tests were written for the Driver class. The class was initially mode
 
 To keep the conversion and calculation of minutes driven on the Trip class simple, the start and stop times were stored as LocalTime variables taking advantage of it's static parse method and leveraging Java's ChronoUnit class's built in method to calculate the time between two LocalTime variables.  
 
-Next, created basic test cases for the ReportReader class that reads the input file and returns a List of Strings with each string containing the command and it's parameters. 
+Next, I wrote basic test cases for the ReportReader class that reads the input file and returns a List of Strings with each string containing the command and it's parameters. 
 
 The list of strings is then converted by the ReportDataManager class to execute either registering a new driver or mapping trips to the correct driver if the trip passes validation. In order to check which driver the trip belonged to, an equals override was added to the Driver class with the driverName as the uniqueness identifier.
 
