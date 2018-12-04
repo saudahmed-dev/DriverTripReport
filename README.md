@@ -5,7 +5,7 @@ DriverTripReport
 
 1. Navigate to parent folder that contains the 'pom.xml' file
 2. Run this code: `mvn install`
-3. Navigate to the  'target folder 
+3. Navigate to the  'target' folder 
 4. Run this code: `java -cp RootDriverReport-1.0.jar main.java.RootDriverReport <arguments>`
 
 And insert your file where <arguments> goes without the '<' and '>' on the ends.
