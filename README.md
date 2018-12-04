@@ -37,9 +37,11 @@ The firsts tests were written for the Driver class. The class was initially mode
 
 The Trip class was modeled with the input file in mind. To keep the conversion and calculation of minutes driven simple, the start and stop times were stored as LocalTime variables, leveraging Java's ChronoUnit class's built in method to calculate the time between start and stop time as well as the advantage of being able to store a string containing time and avoid any parsing. 
 
-I next created basic test cases for the ReportReader class that reads the input file and returns a List of Strings with each string containing the command and it's parameters. The list of strings is then used by the ReportDataManager class that checks to see if the trip is valid and then maps to the correct driver before returning a list of drivers. In order to check which driver the trip belonged to, an equals override was added to the Driver class with the driverName as the uniqueness identifier.
+I next created basic test cases for the ReportReader class that reads the input file and returns a List of Strings with each string containing the command and it's parameters. 
 
-As functionality was added to the ReportDataManager the class grew harder to read and upon refactoring three private utility methods were extracted and tests for these methods were rewritten using method reflection. Lastly, The ReportDataManager calls the DriverStatCalculator, which uses the Driver's list of trips to calculate average MPH and totalMilesDriven, before returning the list of drivers. 
+The list of strings is then converted by the ReportDataManager class to execute either registering a new driver or logging a trip. This class is also responsible for checking if the trip is valid and for mapping trips to the correct driver. In order to check which driver the trip belonged to, an equals override was added to the Driver class with the driverName as the uniqueness identifier.
+
+As functionality was added to the ReportDataManager the class grew harder to read. Upon refactoring, three private utility methods were extracted and tests for these methods were rewritten using method reflection. Before returning the lit of Drivers this class calls the DriverStatCalculator to cleanly calculate each of the driver's stats.
 
 The final class, other than the main method, is the ReportPrinter which formats the list of drivers for output. Before formatting, this class's method leverages the Comparator interface to sort the list of drivers by miles driven.
 
