@@ -35,11 +35,11 @@ ReportReader reads file and ReportDataManager coverts it to list of drivers whic
 
 The firsts tests were written for the Driver class. The class was initially modeled with only a driver name, total miles driven and average MPH. However, in order to determine the driver's total miles and average MPH, a list of trips was added later on to be utilized by DriverStatCalculator class for reporting.
 
-The Trip class was modeled with the input file in mind. To keep the conversion and calculation of minutes driven simple, the start and stop times were stored as LocalTime variables, leveraging Java's ChronoUnit class's built in method to calculate the time between start and stop time as well as the advantage of being able to store a string containing time and avoid any parsing. 
+To keep the conversion and calculation of minutes driven on the Trip class simple, the start and stop times were stored as LocalTime variables taking advantage of it's static parse method and leveraging Java's ChronoUnit class's built in method to calculate the time between two LocalTime variables.  
 
-I next created basic test cases for the ReportReader class that reads the input file and returns a List of Strings with each string containing the command and it's parameters. 
+Next, created basic test cases for the ReportReader class that reads the input file and returns a List of Strings with each string containing the command and it's parameters. 
 
-The list of strings is then converted by the ReportDataManager class to execute either registering a new driver or logging a trip. This class is also responsible for checking if the trip is valid and for mapping trips to the correct driver. In order to check which driver the trip belonged to, an equals override was added to the Driver class with the driverName as the uniqueness identifier.
+The list of strings is then converted by the ReportDataManager class to execute either registering a new driver or mapping trips to the correct driver if the trip passes validation. In order to check which driver the trip belonged to, an equals override was added to the Driver class with the driverName as the uniqueness identifier.
 
 As functionality was added to the ReportDataManager the class grew harder to read. Upon refactoring, three private utility methods were extracted and tests for these methods were rewritten using method reflection. Before returning the lit of Drivers this class calls the DriverStatCalculator to cleanly calculate each of the driver's stats.
 
