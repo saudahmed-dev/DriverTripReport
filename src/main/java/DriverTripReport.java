@@ -4,15 +4,15 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import main.java.driver.Driver;
-import main.java.report.ReportDataManager;
+import main.java.report.DataManager;
 import main.java.report.ReportPrinter;
-import main.java.report.ReportReader;
+import main.java.report.InputReader;
 
-public class RootDriverReport {
+public class DriverTripReport {
 
 	public static void main(String[] args) {
-		final ReportReader reportReader = new ReportReader();
-		final ReportDataManager reportDataManager = new ReportDataManager();
+		final InputReader reportReader = new InputReader();
+		final DataManager reportDataManager = new DataManager();
 		final ReportPrinter reportPrinter = new ReportPrinter();
 
 		try {

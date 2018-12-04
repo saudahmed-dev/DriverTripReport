@@ -6,11 +6,11 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import main.java.report.ReportReader;
+import main.java.report.InputReader;
 
-public class ReportReaderTest {
+public class InputReaderTest {
 
-	ReportReader reportReader = new ReportReader();
+	InputReader reportReader = new InputReader();
 	
 	@Test(expected = FileNotFoundException.class)
 	public void test_file_not_found() throws FileNotFoundException {

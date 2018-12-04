@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>main.java</groupId>
-	<artifactId>RootDriverReport</artifactId>
+	<artifactId>DriverTripReport</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<dependencies>
@@ -32,7 +32,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>main.java.RootDriverReport​​</mainClass>
+							<mainClass>main.java.DriverTripReport​​</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

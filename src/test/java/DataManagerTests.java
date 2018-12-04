@@ -16,13 +16,13 @@ import org.junit.Test;
 
 import main.java.driver.Driver;
 import main.java.driver.Trip;
-import main.java.report.ReportDataManager;
-import main.java.report.ReportReader;
+import main.java.report.DataManager;
+import main.java.report.InputReader;
 
-public class ReportDataManagerTests {
+public class DataManagerTests {
 	
-	ReportReader reader;
-	ReportDataManager dataManager;
+	InputReader reader;
+	DataManager dataManager;
 	List<String> fileLinesList1;
 	List<String> fileLinesList2;
 	List<Driver> drivers;
@@ -35,8 +35,8 @@ public class ReportDataManagerTests {
 	
 	@Before
 	public void setup() throws FileNotFoundException, NoSuchMethodException, SecurityException {
-		reader = new ReportReader();
-		dataManager = new ReportDataManager();
+		reader = new InputReader();
+		dataManager = new DataManager();
 		fileLinesList1 = reader.getLinesFromFile(filePath);
 		fileLinesList2 = reader.getLinesFromFile(filePath2);
 		trip1 = new Trip(dan, LocalTime.of(8, 0), LocalTime.of(10, 0), 100);
@@ -46,10 +46,10 @@ public class ReportDataManagerTests {
 		trip5 = new Trip(brian, LocalTime.of(7, 45), LocalTime.of(8, 30), 25);
 		trip6 = new Trip(dan, LocalTime.of(9, 45), LocalTime.of(11, 50), 7);
 		
-		isTripValid = ReportDataManager.class.getDeclaredMethod("isTripValid", Trip.class);
+		isTripValid = DataManager.class.getDeclaredMethod("isTripValid", Trip.class);
 		isTripValid.setAccessible(true);
 		
-		mapLineToTrip = ReportDataManager.class.getDeclaredMethod("mapLineToTrip", String[].class);
+		mapLineToTrip = DataManager.class.getDeclaredMethod("mapLineToTrip", String[].class);
 		mapLineToTrip.setAccessible(true);
 		
 	}
@@ -97,7 +97,7 @@ public class ReportDataManagerTests {
 	public void test_private_map_line_to_trip() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		String [] fileLine = {"Trip", "Dan", "07:45", "08:45", "25.8"};
 		
-		Method mapLineToTrip = ReportDataManager.class.getDeclaredMethod("mapLineToTrip", String[].class);
+		Method mapLineToTrip = DataManager.class.getDeclaredMethod("mapLineToTrip", String[].class);
 		mapLineToTrip.setAccessible(true);
 		Trip trip = (Trip) mapLineToTrip.invoke(dataManager, new Object[] {fileLine});
 		
@@ -121,7 +121,7 @@ public class ReportDataManagerTests {
 		Assert.assertEquals(driver1.getTrips().size(), 0); // test number of trips before method call
 		Assert.assertEquals(driver2.getTrips().size(), 0);
 		
-		Method addTripToDriverInList = ReportDataManager.class.getDeclaredMethod("addTripToDriverInList", List.class, Trip.class);
+		Method addTripToDriverInList = DataManager.class.getDeclaredMethod("addTripToDriverInList", List.class, Trip.class);
 		addTripToDriverInList.setAccessible(true);
 		addTripToDriverInList.invoke(dataManager, driverTestList,trip );
 		

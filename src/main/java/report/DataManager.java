@@ -7,7 +7,7 @@ import java.util.List;
 import main.java.driver.Driver;
 import main.java.driver.Trip;
 
-public class ReportDataManager {
+public class DataManager {
 
 	private List<Driver> drivers = new ArrayList<Driver>();
 	private DriverListStatCalculator statCalc = new DriverListStatCalculator();

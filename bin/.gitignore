@@ -1,0 +1,10 @@
+/.DS_Store
+/.classpath
+/.project
+/.settings/
+/main/
+/pom.xml
+/target/
+/test/
+/textFile.csv
+/textFileCopy.csv
